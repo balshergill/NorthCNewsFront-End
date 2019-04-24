@@ -4,25 +4,30 @@ import React, { Component } from "react";
 import "../App.css";
 
 class UserLogin extends Component {
-  state = { username: "butter_bridge" };
+  state = { username: "" };
 
   render() {
     const { username } = this.state;
     return (
       <div className="auth">
         <form className="login-form" onSubmit={this.handleSubmit}>
-          <h2>Please Login to your account</h2>
-
-          <input
-            type="text"
-            id="username"
-            name="username"
-            value={username}
-            onChange={this.handleChange}
-          />
-          <button id="button" type="submit">
-            Log in
-          </button>
+          {this.state.username == "butter_bridge" ? (
+            <h2>Welcome {username}!</h2>
+          ) : (
+            <div>
+              <h2>Please Login to your account</h2>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={username}
+                onChange={this.handleChange}
+              />
+              <button id="button" type="submit">
+                Log in
+              </button>
+            </div>
+          )}
         </form>
       </div>
     );

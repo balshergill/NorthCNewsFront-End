@@ -15,7 +15,6 @@ export const getArticles = async () => {
 export const getUser = async username => {
   const { data } = await axios.get(`${mainURL}/users/${username}`);
   console.log(data);
-  return data;
 };
 
 export const getArticlesById = async article_id => {
@@ -23,7 +22,15 @@ export const getArticlesById = async article_id => {
   return data.article;
 };
 
-// export const getArticleComments = async articleId => {
-//   const { data } = await axios.get(`${mainURL}/articles/${articleId}/comments`);
-//   return data.comments;
-// };
+export const getVotes = async (inc_votes, article_id) => {
+  const { data } = await axios.patch(`${mainURL}/articles/${article_id}`, {
+    inc_votes
+  });
+  console.log(data.updatedArticle[0]);
+  return data.updatedArticle[0];
+};
+
+export const getArticleComments = async articleId => {
+  const { data } = await axios.get(`${mainURL}/articles/${articleId}/comments`);
+  return data.comments;
+};

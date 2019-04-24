@@ -31,7 +31,7 @@
 
 .Main {
   grid-area: main;
-  font-size: 2.5em;
+  font-size: 1.5em;
   border: 1px solid;
   justify-content: space-evenly;
   width: 100%;
@@ -45,4 +45,14 @@
   grid-area: footer;
   border: 1px solid;
   font-size: 2em;
+}
+
+.ArticleTitle {
+  font-size: 0.6em;
+  text-align: left;
+}
+
+.ArticleBody {
+  font-size: 0.35em;
+  text-align: left;
 }

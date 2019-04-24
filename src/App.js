@@ -9,6 +9,7 @@ import Articles from "../src/components/Articles";
 import Topics from "../src/components/Topics";
 import UserLogin from "./components/UserLogin";
 import OneArticle from "../src/components/OneArticle";
+import ArticlesByTopic from "../src/components/ArticlesByTopic";
 
 import * as api from "./api";
 
@@ -33,23 +34,28 @@ class App extends Component {
           <Articles path="/api/articles" />
           <Topics path="api/topics" topics={topics} />
           <OneArticle path="api/articles/:article_id" articles={articles} />
+          <ArticlesByTopic
+            path="api/topics/:topic_slug/articles"
+            topics={topics}
+            articles={articles}
+          />
         </Router>
         <Footer />
       </div>
     );
   }
 
+  componentDidMount() {
+    this.fetchTopics();
+    this.fetchArticles();
+    this.login();
+  }
   login = username => {
     api.getUser(username).then(username => {
       console.log(username);
       this.setState({ user: username });
     });
   };
-
-  componentDidMount() {
-    this.fetchTopics();
-    this.fetchArticles();
-  }
 
   fetchTopics = () => {
     api.getTopics().then(topics => {

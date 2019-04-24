@@ -1,16 +1,22 @@
 import React, { Component } from "react";
 import "../App.css";
+import Vote from "../components/Vote.jsx";
 
 class OneArticle extends Component {
   render() {
     const { articles, article_id } = this.props;
-    let articleRequested = articles.filter(function(article) {
+    const articleRequested = articles.filter(function(article) {
       return article.article_id == article_id;
     });
     console.log(articleRequested[0]);
     return (
       <ul className="oneArticle">
-        <li>{articleRequested[0]}</li>
+        <p>{articleRequested[0] ? articleRequested[0].title : null}</p>
+        <p>{articleRequested[0] ? articleRequested[0].body : null}</p>
+        <Vote
+          votes={articleRequested[0] ? articleRequested[0].votes : null}
+          id={article_id}
+        />
       </ul>
     );
   }
