@@ -7,56 +7,59 @@ import Home from "../src/components/Home";
 import { Router, Link } from "@reach/router";
 import Articles from "../src/components/Articles";
 import Topics from "../src/components/Topics";
-import Users from "../src/components/Users";
-import * as api from "./api";
-// const express = require("express");
-// const app = express();
-// const cors = require("cors");
+import UserLogin from "./components/UserLogin";
+import OneArticle from "../src/components/OneArticle";
 
-// app.use(cors());
+import * as api from "./api";
 
 class App extends Component {
   state = {
-    articles: [],
     topics: [],
-    users: [],
-    comments: []
+    articles: [],
+    user: null,
+    loginFailed: false,
+    isLoading: false
   };
   render() {
-    const { articles, users, topics, comments } = this.state;
+    const { articles, topics, isLoading, user, loginFailed } = this.state;
+    if (isLoading) return <h2>Loading......</h2>;
     return (
       <div className="App">
         <Header />
-        <Navbar
-          topics={topics}
-          users={users}
-          articles={articles}
-          comments={comments}
-        />
-        <Router classname="Main">
-          <Home
-            path="/"
-            topics={topics}
-            users={users}
-            articles={articles}
-            comments={comments}
-          />
-          <Articles path="/api/articles" articles={articles} />
+        <UserLogin login={this.login} user={user} />
+        <Navbar className="Navbar" topics={topics} articles={articles} />
+        <Router className="Main">
+          <Home path="/" />
+          <Articles path="/api/articles" />
           <Topics path="api/topics" topics={topics} />
-          <Users path="api/users" users={users} />
+          <OneArticle path="api/articles/:article_id" articles={articles} />
         </Router>
         <Footer />
       </div>
     );
   }
 
+  login = username => {
+    api.getUser(username).then(username => {
+      console.log(username);
+      this.setState({ user: username });
+    });
+  };
+
   componentDidMount() {
     this.fetchTopics();
+    this.fetchArticles();
   }
 
   fetchTopics = () => {
     api.getTopics().then(topics => {
+      console.log(topics);
       this.setState({ topics });
+    });
+  };
+  fetchArticles = () => {
+    api.getArticles().then(articles => {
+      this.setState({ articles });
     });
   };
 }

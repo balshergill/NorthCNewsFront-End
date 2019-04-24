@@ -1,12 +1,20 @@
 .App {
   height: 100vh;
+  width: 100vw;
   text-align: center;
   display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 2fr 18fr 1fr;
   grid-template-areas:
-    "header"
-    "navbar"
-    "main"
-    "footer";
+    "header auth"
+    "navbar navbar"
+    "main main"
+    "footer footer";
+}
+
+.Auth {
+  grid-area: auth;
+  border: 1px solid;
 }
 
 .Navbar {
@@ -16,25 +24,25 @@
 
 .Header {
   grid-area: header;
-  grid-row-end: 1;
-
+  background-color: rgba(50, 115, 220, 0.3);
   border: 1px solid;
-
-  justify-content: space-evenly;
-
-  width: 100%;
-
-  display: flex;
-  flex-direction: row;
-  flex-flow: wrap;
+  font-size: 2em;
 }
 
 .Main {
   grid-area: main;
+  font-size: 2.5em;
   border: 1px solid;
+  justify-content: space-evenly;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+  background-color: rgb(223, 223, 156);
 }
 
 .Footer {
   grid-area: footer;
   border: 1px solid;
+  font-size: 2em;
 }

@@ -1,0 +1,89 @@
+.navbarmain {
+  background-color: white;
+  overflow: hidden;
+  align-self: auto;
+  width: 100%;
+}
+
+.navbarmain link {
+  float: center;
+  color: #f2f2f2;
+  text-align: center;
+  font-size: 20px;
+}
+
+.dropdown {
+  float: center;
+  overflow: hidden;
+}
+.dropdown .dropbtn {
+  font-size: 20px;
+  border: 1px, solid, black;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: burlywood;
+  border: white, solid;
+  margin-right: 2.5px;
+  border-radius: 40px;
+  box-shadow: 2px 2px 2px #888888;
+  overflow: hidden;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: lightsalmon;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: grey;
+  min-width: 85px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  -webkit-appearance: none;
+  list-style: none;
+  text-align: left;
+  padding-left: 5px;
+}
+
+.dropdown-content link {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: right;
+  margin-left: 5px;
+}
+
+.dropdown-content link:hover {
+  background-color: #888888;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbarmain .buttonNavbar {
+  font-size: 17px;
+  border: 1px, solid, black;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: burlywood;
+  border: white, solid;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 2.5px;
+  text-decoration: none;
+  border-radius: 40px;
+  box-shadow: 2px 2px 2px #888888;
+  overflow: hidden;
+}
+
+.buttonNavbar:hover {
+  background-color: lavenderblush;
+}
+#button-drop {
+  color: #d695a0;
+}
