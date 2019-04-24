@@ -30,7 +30,7 @@ class App extends Component {
         <UserLogin login={this.login} user={user} />
         <Navbar className="Navbar" topics={topics} articles={articles} />
         <Router className="Main">
-          <Home path="/" />
+          <Home path="/" articles={articles} topics={topics} />
           <Articles path="/api/articles" />
           <Topics path="api/topics" topics={topics} />
           <OneArticle path="api/articles/:article_id" articles={articles} />
@@ -39,6 +39,12 @@ class App extends Component {
             topics={topics}
             articles={articles}
           />
+          <ArticlesByTopic
+            path="api/articles/:article_id"
+            topics={topics}
+            articles={articles}
+          />
+          <UserLogin path="api/users/:username" />
         </Router>
         <Footer />
       </div>

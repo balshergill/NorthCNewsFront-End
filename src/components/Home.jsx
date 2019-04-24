@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import "../App.css";
 
 class Home extends Component {
-  //state
+  state = {
+    articles: []
+  };
   render() {
     return (
       <div>
@@ -11,9 +13,6 @@ class Home extends Component {
           Northcoders News is a social news aggregation, web content rating, and
           discussion website.
         </p>
-        <button> View Articles </button>
-        <button> View Topics </button>
-        <button> Add an Article </button>
       </div>
     );
   }

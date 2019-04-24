@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "@reach/router";
 import "../App.css";
 
 class ArticlesByTopic extends Component {
@@ -10,8 +11,12 @@ class ArticlesByTopic extends Component {
     const mappedArticles = topicArticlesRequested.map(function(topic) {
       return (
         <div>
-          <p className="ArticleTitle">{topic.title}</p>
-          <p className="ArticleBody">{topic.body}</p>{" "}
+          <Link
+            to={`../../../../api/articles/${articles[0].article_id}
+          `}
+          >
+            <p className="ArticleTitle">{topic.title}</p>
+          </Link>
         </div>
       );
     });
