@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "../App.css";
+import "./css/OneArticle.css";
 import Vote from "../components/Vote.jsx";
+import { navigate, Link } from "@reach/router";
 
 class OneArticle extends Component {
   render() {
@@ -10,14 +12,34 @@ class OneArticle extends Component {
     });
     console.log(articleRequested[0]);
     return (
-      <ul className="oneArticle">
-        <p>{articleRequested[0] ? articleRequested[0].title : null}</p>
-        <p>{articleRequested[0] ? articleRequested[0].body : null}</p>
-        <Vote
-          votes={articleRequested[0] ? articleRequested[0].votes : null}
-          id={article_id}
-        />
-      </ul>
+      <div>
+        <table align="center" width="70%" className="OneArticle">
+          <tr height="100%">
+            <td width="10%" valign="top">
+              <Vote
+                votes={articleRequested[0] ? articleRequested[0].votes : null}
+                id={article_id}
+              />
+            </td>
+            <td width="90%" align="left" valign="top">
+              <p className="BoldTitle">
+                {articleRequested[0] ? articleRequested[0].title : null}
+              </p>
+              <p>{articleRequested[0] ? articleRequested[0].body : null}</p>
+              <br />
+              <br />
+              <Link to={`../../../api/articles/${article_id}/comments`}>
+                <td>View Comments</td>
+              </Link>
+              <td>
+                Add Comments (wrap Link to post comment to this once post path
+                created)
+              </td>
+              <br />
+            </td>
+          </tr>
+        </table>
+      </div>
     );
   }
 }

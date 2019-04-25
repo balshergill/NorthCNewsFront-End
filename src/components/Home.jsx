@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../App.css";
+import HomeArticles from "./HomeArticles";
 
 class Home extends Component {
   state = {
@@ -13,6 +14,7 @@ class Home extends Component {
           Northcoders News is a social news aggregation, web content rating, and
           discussion website.
         </p>
+        <HomeArticles />
       </div>
     );
   }

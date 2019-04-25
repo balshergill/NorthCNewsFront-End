@@ -16,17 +16,29 @@
   overflow: hidden;
 }
 .dropdown .dropbtn {
-  font-size: 20px;
+  font-size: 18px;
   border: 1px, solid, black;
   outline: none;
   color: black;
   padding: 14px 16px;
   background-color: burlywood;
+  text-decoration: none;
   border: white, solid;
   margin-right: 2.5px;
-  border-radius: 40px;
+  border-radius: 10px;
   box-shadow: 2px 2px 2px #888888;
   overflow: hidden;
+  font-family: "Montserrat", sans-serif;
+}
+a,
+a:link,
+a:visited,
+a:focus,
+a:hover,
+a:active {
+  color: black;
+  text-decoration: none;
+  cursor: crosshair;
 }
 
 .dropdown:hover .dropbtn {
@@ -43,6 +55,7 @@
   list-style: none;
   text-align: left;
   padding-left: 5px;
+  text-decoration: none;
 }
 
 .dropdown-content link {
@@ -65,17 +78,17 @@
 }
 
 .navbarmain .buttonNavbar {
-  font-size: 17px;
+  font-size: 18px;
   border: 1px, solid, black;
   outline: none;
   color: black;
   padding: 14px 16px;
   background-color: burlywood;
   border: white, solid;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Montserrat", sans-serif;
   margin-right: 2.5px;
   text-decoration: none;
-  border-radius: 40px;
+  border-radius: 10px;
   box-shadow: 2px 2px 2px #888888;
   overflow: hidden;
 }
@@ -84,5 +97,5 @@
   background-color: lavenderblush;
 }
 #button-drop {
-  color: #d695a0;
+  color: black;
 }

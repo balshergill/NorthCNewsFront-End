@@ -10,6 +10,7 @@ import Topics from "../src/components/Topics";
 import UserLogin from "./components/UserLogin";
 import OneArticle from "../src/components/OneArticle";
 import ArticlesByTopic from "../src/components/ArticlesByTopic";
+import Comments from "../src/components/Comments";
 
 import * as api from "./api";
 
@@ -17,12 +18,20 @@ class App extends Component {
   state = {
     topics: [],
     articles: [],
+    comments: [],
     user: null,
     loginFailed: false,
     isLoading: false
   };
   render() {
-    const { articles, topics, isLoading, user, loginFailed } = this.state;
+    const {
+      articles,
+      topics,
+      isLoading,
+      user,
+      comments,
+      loginFailed
+    } = this.state;
     if (isLoading) return <h2>Loading......</h2>;
     return (
       <div className="App">
@@ -45,6 +54,11 @@ class App extends Component {
             articles={articles}
           />
           <UserLogin path="api/users/:username" />
+          <Comments
+            path="/api/articles/:article_id/comments"
+            articles={articles}
+            comments={comments}
+          />
         </Router>
         <Footer />
       </div>
@@ -56,6 +70,7 @@ class App extends Component {
     this.fetchArticles();
     this.login();
   }
+
   login = username => {
     api.getUser(username).then(username => {
       console.log(username);
@@ -65,7 +80,6 @@ class App extends Component {
 
   fetchTopics = () => {
     api.getTopics().then(topics => {
-      console.log(topics);
       this.setState({ topics });
     });
   };

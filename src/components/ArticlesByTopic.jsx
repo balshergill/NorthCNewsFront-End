@@ -12,15 +12,16 @@ class ArticlesByTopic extends Component {
       return (
         <div>
           <Link
-            to={`../../../../api/articles/${articles[0].article_id}
+            to={`../../../../api/articles/${topic.article_id}
           `}
           >
             <p className="ArticleTitle">{topic.title}</p>
+            <button className="btn_more">Read more</button>
           </Link>
         </div>
       );
     });
-    console.log(topicArticlesRequested[0]);
+    console.log(topicArticlesRequested);
     console.log(mappedArticles);
     return (
       <div>

@@ -39,7 +39,7 @@ class Navbar extends Component {
           </span>
           <span className="dropdown">
             <button className="dropbtn" id="button-drop">
-              Articles
+              <Link to={"/api/articles"}>Articles </Link>
               <span className="dropdown-content">
                 {articles.map(article => {
                   return (
@@ -57,19 +57,19 @@ class Navbar extends Component {
             <Link to="/users">Users</Link>
           </button>
           <button className="buttonNavbar">
-            <Link to="/articles/post_article">Add article</Link>
+            <Link to="api/users/:username">Login</Link>
           </button>
         </nav>
       </div>
     );
   }
+  componentDidMount() {
+    this.fetchArticles();
+  }
   fetchArticles = () => {
     getArticles().then(articles => {
       this.setState({ articles });
     });
-    // componentDidMount() {
-    //   this.fetchArticles();
-    // }
   };
 }
 

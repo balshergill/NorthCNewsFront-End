@@ -27,11 +27,12 @@
   background-color: rgba(50, 115, 220, 0.3);
   border: 1px solid;
   font-size: 2em;
+  font-family: "Raleway", sans-serif;
 }
 
 .Main {
   grid-area: main;
-  font-size: 1.5em;
+  font-size: 1em;
   border: 1px solid;
   justify-content: space-evenly;
   width: 100%;
@@ -55,4 +56,15 @@
 .ArticleBody {
   font-size: 0.35em;
   text-align: left;
+}
+
+.btn_more {
+  padding: 12px 12px;
+  background: #000;
+  display: inline-block;
+  color: #fff;
+  border-radius: 30px;
+  border: 2px solid #000;
+  font-size: 14px;
+  font-weight: 400;
 }

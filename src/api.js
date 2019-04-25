@@ -30,7 +30,10 @@ export const getVotes = async (inc_votes, article_id) => {
   return data.updatedArticle[0];
 };
 
-export const getArticleComments = async articleId => {
-  const { data } = await axios.get(`${mainURL}/articles/${articleId}/comments`);
+export const getComments = async article_id => {
+  const { data } = await axios.get(
+    `${mainURL}/articles/${article_id}/comments`
+  );
+  console.log(data);
   return data.comments;
 };

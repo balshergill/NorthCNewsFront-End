@@ -11,7 +11,7 @@ class UserLogin extends Component {
     return (
       <div className="auth">
         <form className="login-form" onSubmit={this.handleSubmit}>
-          {this.state.username == "butter_bridge" ? (
+          {this.state.username == "jessjelly" ? (
             <h2>Welcome {username}!</h2>
           ) : (
             <div>
