@@ -19,12 +19,6 @@ class HomeArticles extends Component {
     this.setState({ sorting: e.target.value });
   };
 
-  //  const timeStampJSConversion = (created_at) => {
-  //   const newTime = new Date(created_at);
-  //       const sliced = newTime.toISOString().slice(0, 10);
-  //       return sliced
-  //     }
-
   render() {
     const { articles, sorting } = this.state;
     const articles_data = [];
