@@ -68,3 +68,9 @@ body {
 .BoldTitle {
   font-weight: bold;
 }
+
+.ColorBlack {
+  color: black;
+  font-weight: bold;
+  border-style: groove;
+}

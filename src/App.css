@@ -26,8 +26,12 @@
   grid-area: header;
   background-color: rgba(50, 115, 220, 0.3);
   border: 1px solid;
-  font-size: 2em;
+  font-size: 3em;
+  font-weight: bolder;
   font-family: "Raleway", sans-serif;
+  padding-top: 40px;
+  text-align: center;
+  background-image: url(https://www.peterwade.org.uk/wp-content/uploads/2012/09/blue-header-plain6.jpg);
 }
 
 .Main {
@@ -39,7 +43,7 @@
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
-  background-color: rgb(223, 223, 156);
+  background-color: whitesmoke;
 }
 
 .Footer {

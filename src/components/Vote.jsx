@@ -19,7 +19,7 @@ class Vote extends Component {
   vote = inc_votes => {
     const { id } = this.props;
     getVotes(inc_votes, id).then(article => {
-      this.setState({ voteChange: article.votes + inc_votes });
+      this.setState({ voteChange: inc_votes });
     });
   };
 }

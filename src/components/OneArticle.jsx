@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import "./css/OneArticle.css";
 import Vote from "../components/Vote.jsx";
+import Comments from "../components/Comments.jsx";
 import { navigate, Link } from "@reach/router";
 
 class OneArticle extends Component {
@@ -28,9 +29,11 @@ class OneArticle extends Component {
               <p>{articleRequested[0] ? articleRequested[0].body : null}</p>
               <br />
               <Link to={`../../../api/articles/${article_id}/comments`}>
-                <td>Comments</td>
+                <td className="ColorBlack">Comments</td>
               </Link>
               <td>
+                <Comments article_id={article_id} />
+                <br />
                 Add Comment (wrap Link to post comment to this once post path
                 created)
               </td>
@@ -53,3 +56,11 @@ export default OneArticle;
 
 // - the article page with ID - what should this have on it ?
 //   - The ability to vote, the comments below, the ability to add comments.
+
+{
+  /* <br />
+  <Link to={`../../../api/articles/${article_id}/comments`}>
+    <td>Comments</td>
+  </Link>
+  <td> */
+}

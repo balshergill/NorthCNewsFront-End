@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getComments } from "../api.js";
+import "../components/css/Comments.css";
 
 class Comments extends Component {
   state = {
@@ -14,9 +15,9 @@ class Comments extends Component {
         <p>
           {comments.map(comment => {
             return (
-              <div>
+              <div className="AddBorder">
                 <p>{comment.body}</p>
-                <p>by {comment.author}</p>
+                <p className="Author">by {comment.author}</p>
               </div>
             );
           })}

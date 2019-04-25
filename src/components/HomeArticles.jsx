@@ -27,35 +27,40 @@ class HomeArticles extends Component {
 
   render() {
     const { articles, sorting } = this.state;
-
     const articles_data = [];
     articles.map(article => {
       article.comment_count_in = parseInt(article.comment_count);
-      console.log(article);
+      article.created_atSliced = article.created_at.slice(0, 10);
       articles_data.push(article);
     });
 
     articles_data.sort((a, b) => {
-      if (sorting == "votes") {
+      if (sorting == "votes_asc") {
         return parseInt(a.votes) - parseInt(b.votes);
       } else if (sorting == "votes_desc") {
         return parseInt(b.votes) - parseInt(a.votes);
-      } else if (sorting == "comment") {
-        return parseInt(a.comment_count_in) < parseInt(b.comment_count_in);
+      } else if (sorting == "comment asc") {
+        return a.comment_count_in - b.comment_count_in;
       } else if (sorting == "comment_desc") {
-        return parseInt(b.comment_count_in) < parseInt(a.comment_count_in);
+        return b.comment_count_in - a.comment_count_in;
+      } else if (sorting == "created_at asc") {
+        return parseInt(a.created_atSliced) - parseInt(b.created_atSliced);
+      } else if (sorting == "created_at desc") {
+        return parseInt(b.created_atSliced) - parseInt(a.created_atSliced);
       }
     });
 
     return (
       <div>
         <div className="ArtStyle">
-          <select value={sorting} onChange={this.sortingonChange}>
+          <select value={sorting} onChange={this.sortOnChange}>
             <option value="">Sort By</option>
-            <option value="votes">votes</option>
+            <option value="votes_asc">votes (Asc) </option>
             <option value="votes_desc">votes (Desc)</option>
-            <option value="comment">Comments</option>
+            <option value="comment asc">Comments (Asc)</option>
             <option value="comment_desc">Comments (Desc)</option>
+            <option value="created_at asc">Date Created (Asc)</option>
+            <option value="created_at desc">Date Created(Desc)</option>
           </select>
         </div>
 
@@ -92,12 +97,12 @@ class HomeArticles extends Component {
                           <td className="TDComments">
                             Comments
                             <br />
-                            {votes}
+                            {comment_count}
                           </td>
                           <td className="TDDate">
                             Date
                             <br />
-                            {created_at}
+                            {created_at.slice(0, 10)}
                           </td>
                         </tr>
                       </table>

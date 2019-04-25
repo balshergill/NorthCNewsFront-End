@@ -18,20 +18,12 @@ class App extends Component {
   state = {
     topics: [],
     articles: [],
-    comments: [],
     user: null,
     loginFailed: false,
     isLoading: false
   };
   render() {
-    const {
-      articles,
-      topics,
-      isLoading,
-      user,
-      comments,
-      loginFailed
-    } = this.state;
+    const { articles, topics, isLoading, user, loginFailed } = this.state;
     if (isLoading) return <h2>Loading......</h2>;
     return (
       <div className="App">
@@ -57,7 +49,6 @@ class App extends Component {
           <Comments
             path="/api/articles/:article_id/comments"
             articles={articles}
-            comments={comments}
           />
         </Router>
         <Footer />

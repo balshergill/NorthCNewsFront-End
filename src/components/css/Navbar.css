@@ -19,9 +19,9 @@
   font-size: 18px;
   border: 1px, solid, black;
   outline: none;
-  color: black;
+  color: white;
   padding: 14px 16px;
-  background-color: burlywood;
+  background-color: navy;
   text-decoration: none;
   border: white, solid;
   margin-right: 2.5px;
@@ -36,7 +36,7 @@ a:visited,
 a:focus,
 a:hover,
 a:active {
-  color: black;
+  color: white;
   text-decoration: none;
   cursor: crosshair;
 }
@@ -83,7 +83,7 @@ a:active {
   outline: none;
   color: black;
   padding: 14px 16px;
-  background-color: burlywood;
+  background-color: navy;
   border: white, solid;
   font-family: "Montserrat", sans-serif;
   margin-right: 2.5px;
@@ -97,5 +97,5 @@ a:active {
   background-color: lavenderblush;
 }
 #button-drop {
-  color: black;
+  color: white;
 }
