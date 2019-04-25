@@ -27,12 +27,11 @@ class OneArticle extends Component {
               </p>
               <p>{articleRequested[0] ? articleRequested[0].body : null}</p>
               <br />
-              <br />
               <Link to={`../../../api/articles/${article_id}/comments`}>
-                <td>View Comments</td>
+                <td>Comments</td>
               </Link>
               <td>
-                Add Comments (wrap Link to post comment to this once post path
+                Add Comment (wrap Link to post comment to this once post path
                 created)
               </td>
               <br />

@@ -8,7 +8,21 @@ class Comments extends Component {
   render() {
     const { article_id } = this.props;
     const { comments } = this.state;
-    return <div>{/* <p>{comments[0] ? comments[0] : null}</p> */}</div>;
+    console.log(comments);
+    return (
+      <div>
+        <p>
+          {comments.map(comment => {
+            return (
+              <div>
+                <p>{comment.body}</p>
+                <p>by {comment.author}</p>
+              </div>
+            );
+          })}
+        </p>
+      </div>
+    );
   }
 
   componentDidMount() {
