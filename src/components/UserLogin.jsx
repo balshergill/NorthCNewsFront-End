@@ -1,5 +1,3 @@
-// - a user profile page
-
 import React, { Component } from "react";
 import "../App.css";
 
@@ -10,9 +8,14 @@ class UserLogin extends Component {
     const { username } = this.state;
     return (
       <div className="auth">
-        <form className="login-form" onSubmit={this.handleSubmit}>
-          {this.state.username == "jessjelly" ? (
-            <h2>Welcome {username}!</h2>
+        <form className="login-form" onSubmit={this.handleLogin}>
+          {this.state.username === "jessjelly" ? (
+            <div>
+              <h2>Welcome {username}!</h2>
+              <button onClick={this.handleLogout} id="button" type="submit">
+                LOG OUT
+              </button>
+            </div>
           ) : (
             <div>
               <h2>Please Login to your account</h2>
@@ -33,7 +36,7 @@ class UserLogin extends Component {
     );
   }
 
-  handleSubmit = event => {
+  handleLogin = event => {
     event.preventDefault();
     const { username } = this.state;
     const { login } = this.props;
@@ -42,6 +45,12 @@ class UserLogin extends Component {
 
   handleChange = ({ target }) => {
     this.setState({ username: target.value });
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    const { username } = this.state;
+    this.setState({ username: "" });
   };
 }
 
