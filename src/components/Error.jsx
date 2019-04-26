@@ -6,7 +6,7 @@ const Error = () => {
     <main>
       <h1>Oops!!</h1>
       <h2>Something went wrong.</h2>
-      <p>Please go to the Homepage and try again...</p>
+      <p>Please go to the Homepage and try again..</p>
       <Link to="/">
         <button className="button">Go Home</button>
       </Link>
