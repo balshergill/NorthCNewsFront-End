@@ -3,11 +3,11 @@
   width: 100vw;
   text-align: center;
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 2fr 2fr 18fr 1fr;
+  grid-template-columns: 4fr 1fr;
+  grid-template-rows: 4fr 1fr 20fr 1fr;
   grid-template-areas:
-    "header auth"
-    "navbar navbar"
+    "header header"
+    "navbar auth"
     "main main"
     "footer footer";
 }
@@ -15,6 +15,7 @@
 .Auth {
   grid-area: auth;
   border: 1px solid;
+  font-size: 13px;
 }
 
 .Navbar {
@@ -26,10 +27,11 @@
   grid-area: header;
   background-color: rgba(50, 115, 220, 0.3);
   border: 1px solid;
-  font-size: 3em;
-  font-weight: bolder;
+  font-size: 4em;
+  font-weight: normal;
   font-family: "Raleway", sans-serif;
   padding-top: 40px;
+  padding-bottom: 40px;
   text-align: center;
   background-image: url(https://www.peterwade.org.uk/wp-content/uploads/2012/09/blue-header-plain6.jpg);
 }
@@ -53,8 +55,9 @@
 }
 
 .ArticleTitle {
-  font-size: 0.6em;
+  font-size: 1.2em;
   text-align: left;
+  color: black;
 }
 
 .ArticleBody {
@@ -62,13 +65,24 @@
   text-align: left;
 }
 
-.btn_more {
-  padding: 12px 12px;
+.Btn_more {
+  padding: 8px 8px;
   background: #000;
   display: inline-block;
   color: #fff;
   border-radius: 30px;
   border: 2px solid #000;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 400;
+}
+
+.FontColorblack {
+  color: black;
+}
+.Footer {
+  font-size: 14px;
+  color: grey;
+  text-align: center;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
 }

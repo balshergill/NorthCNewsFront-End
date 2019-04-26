@@ -8,18 +8,17 @@ class Navbar extends Component {
   state = {
     articles: [],
     topics: [],
-    users: [],
     comments: []
   };
 
   render() {
-    const { articles, users, topics } = this.props;
+    const { articles, topics } = this.props;
 
     return (
       <div className="navbarmain Navbar">
         <nav className="link">
           <button className="buttonNavbar">
-            <Link to="/">HOME</Link>
+            <Link to="/">Homepage</Link>
           </button>
           <span className="dropdown">
             <button className="dropbtn" id="button-drop">
@@ -39,7 +38,7 @@ class Navbar extends Component {
           </span>
           <span className="dropdown">
             <button className="dropbtn" id="button-drop">
-              <Link to={"/api/articles"}>Articles </Link>
+              <Link to={"/api/articles"}>All Articles </Link>
               <span className="dropdown-content">
                 {articles.map(article => {
                   return (
@@ -53,9 +52,6 @@ class Navbar extends Component {
               </span>
             </button>
           </span>
-          <button className="buttonNavbar">
-            <Link to="/users">Users</Link>
-          </button>
           <button className="buttonNavbar">
             <Link to="api/users/:username">Login</Link>
           </button>

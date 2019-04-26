@@ -12,9 +12,9 @@ class Topics extends Component {
       <div className="Main">
         {topics.map(({ slug, description }) => {
           return (
-            <ul>
+            <li className="FontColorBlack">
               {slug} ---------- {description}
-            </ul>
+            </li>
           );
         })}
       </div>

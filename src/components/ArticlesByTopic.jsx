@@ -16,17 +16,21 @@ class ArticlesByTopic extends Component {
           `}
           >
             <p className="ArticleTitle">{topic.title}</p>
-            <button className="btn_more">Read more</button>
+            <button className="Btn_more">Read more</button>
           </Link>
+          <br />
+          <br />
         </div>
       );
     });
-    console.log(topicArticlesRequested);
-    console.log(mappedArticles);
     return (
       <div>
-        All Articles About {topic_slug}
-        <p>{mappedArticles ? mappedArticles : null}</p>
+        <h2>All Articles About {topic_slug}</h2>
+        <br />
+        <br />
+        <p className="FontColorBlack">
+          {mappedArticles ? mappedArticles : null}
+        </p>
       </div>
     );
   }

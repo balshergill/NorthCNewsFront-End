@@ -7,7 +7,7 @@ class UserLogin extends Component {
   render() {
     const { username } = this.state;
     return (
-      <div className="auth">
+      <div className="Auth">
         <form className="login-form" onSubmit={this.handleLogin}>
           {this.state.username === "jessjelly" ? (
             <div>

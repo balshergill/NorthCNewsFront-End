@@ -111,8 +111,6 @@ class HomeArticles extends Component {
     );
   }
 
-  //<div articles={articles}>Articles</div>
-
   componentDidMount() {
     this.fetchArticles();
   }

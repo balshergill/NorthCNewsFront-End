@@ -9,11 +9,11 @@ class Home extends Component {
   render() {
     return (
       <div>
-        <p>WELCOME TO NORTHCODERS NEWS! </p>
-        <p>
+        <h1>Welcome to North C News!</h1>
+        <h2>
           Northcoders News is a social news aggregation, web content rating, and
           discussion website.
-        </p>
+        </h2>
         <HomeArticles />
       </div>
     );

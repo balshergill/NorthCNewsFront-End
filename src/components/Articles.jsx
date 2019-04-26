@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import { getArticles } from "../api.js";
+import HomeArticles from "./HomeArticles";
 
 class Articles extends Component {
   state = {
@@ -9,15 +10,11 @@ class Articles extends Component {
   render() {
     const { articles } = this.state;
     return (
-      <div className="Main">
-        {articles.map(({ title }) => {
-          return <ul>{title}</ul>;
-        })}
+      <div>
+        <HomeArticles />
       </div>
     );
   }
-
-  //<div articles={articles}>Articles</div>
 
   componentDidMount() {
     this.fetchArticles();

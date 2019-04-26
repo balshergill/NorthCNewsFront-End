@@ -4,13 +4,14 @@ import Navbar from "../src/components/Navbar";
 import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Home from "../src/components/Home";
-import { Router, Link } from "@reach/router";
+import { Router } from "@reach/router";
 import Articles from "../src/components/Articles";
 import Topics from "../src/components/Topics";
 import UserLogin from "./components/UserLogin";
 import OneArticle from "../src/components/OneArticle";
 import ArticlesByTopic from "../src/components/ArticlesByTopic";
-import Comments from "../src/components/Comments";
+import PVDComments from "../src/components/PVDComments.jsx";
+import Error from "../src/components/Error.jsx";
 
 import * as api from "./api";
 
@@ -34,7 +35,11 @@ class App extends Component {
           <Home path="/" articles={articles} topics={topics} />
           <Articles path="/api/articles" />
           <Topics path="api/topics" topics={topics} />
-          <OneArticle path="api/articles/:article_id" articles={articles} />
+          <OneArticle
+            path="api/articles/:article_id"
+            articles={articles}
+            user={user}
+          />
           <ArticlesByTopic
             path="api/topics/:topic_slug/articles"
             topics={topics}
@@ -46,11 +51,14 @@ class App extends Component {
             articles={articles}
           />
           <UserLogin path="api/users/:username" />
-          <Comments
+          <PVDComments
             path="/api/articles/:article_id/comments"
             articles={articles}
           />
+          <PVDComments path="/api/comments/:comment_id" articles={articles} />
+          <Error path="/*" />
         </Router>
+
         <Footer />
       </div>
     );
@@ -64,9 +72,12 @@ class App extends Component {
 
   login = username => {
     api.getUser(username).then(username => {
-      console.log(username);
       this.setState({ user: username });
     });
+  };
+
+  logout = username => {
+    this.setState({ user: "" });
   };
 
   fetchTopics = () => {

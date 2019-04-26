@@ -19,7 +19,7 @@
   font-size: 18px;
   border: 1px, solid, black;
   outline: none;
-  color: white;
+  color: lightblue;
   padding: 14px 16px;
   background-color: navy;
   text-decoration: none;
@@ -29,6 +29,7 @@
   box-shadow: 2px 2px 2px #888888;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
+  width: 150px;
 }
 a,
 a:link,
@@ -91,6 +92,7 @@ a:active {
   border-radius: 10px;
   box-shadow: 2px 2px 2px #888888;
   overflow: hidden;
+  width: 150px;
 }
 
 .buttonNavbar:hover {
