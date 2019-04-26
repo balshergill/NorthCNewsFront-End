@@ -25,21 +25,21 @@ class HomeArticles extends Component {
     articles.map(article => {
       article.comment_count_in = parseInt(article.comment_count);
       article.created_atSliced = article.created_at.slice(0, 10);
-      articles_data.push(article);
+      return articles_data.push(article);
     });
 
     articles_data.sort((a, b) => {
-      if (sorting == "votes_asc") {
+      if (sorting === "votes_asc") {
         return parseInt(a.votes) - parseInt(b.votes);
-      } else if (sorting == "votes_desc") {
+      } else if (sorting === "votes_desc") {
         return parseInt(b.votes) - parseInt(a.votes);
-      } else if (sorting == "comment asc") {
+      } else if (sorting === "comment asc") {
         return a.comment_count_in - b.comment_count_in;
-      } else if (sorting == "comment_desc") {
+      } else if (sorting === "comment_desc") {
         return b.comment_count_in - a.comment_count_in;
-      } else if (sorting == "created_at asc") {
+      } else if (sorting === "created_at asc") {
         return parseInt(a.created_atSliced) - parseInt(b.created_atSliced);
-      } else if (sorting == "created_at desc") {
+      } else if (sorting === "created_at desc") {
         return parseInt(b.created_atSliced) - parseInt(a.created_atSliced);
       }
     });
