@@ -21,8 +21,6 @@ class Topics extends Component {
     );
   }
 
-  //<div articles={articles}>Articles</div>
-
   componentDidMount() {
     this.fetchTopics();
   }
@@ -36,5 +34,3 @@ class Topics extends Component {
 }
 
 export default Topics;
-
-// - The articles in order of votes for a particular topic ?
