@@ -86,3 +86,13 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
 }
+.VoteBtn {
+  padding: 2px 2px;
+  background: #000;
+  display: inline-block;
+  color: #fff;
+  border-radius: 30px;
+  border: 2px solid #000;
+  font-size: 15px;
+  font-weight: 900;
+}

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { changeVoteOnComment } from "../api.js";
+import "../App.css";
 
 class VotesOnComments extends Component {
   state = {
@@ -12,17 +13,19 @@ class VotesOnComments extends Component {
     return (
       <div>
         <button
+          className="VoteBtn"
           onClick={() => this.handleVoteChange(1)}
           disabled={voteChange === 1}
         >
-          UP
+          ⇧
         </button>
         <span> Votes: {votes + voteChange} </span>
         <button
+          className="VoteBtn"
           onClick={() => this.handleVoteChange(-1)}
           disabled={voteChange === -1}
         >
-          DOWN
+          ⇩
         </button>
       </div>
     );

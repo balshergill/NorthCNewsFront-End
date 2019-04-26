@@ -12,11 +12,11 @@ class Vote extends Component {
     return (
       <div>
         <button onClick={() => this.vote(1)} disabled={voteChange === 1}>
-          Vote Up
+          ⇧
         </button>
         <p>Votes: {votes + voteChange} </p>
         <button onClick={() => this.vote(-1)} disabled={voteChange === -1}>
-          Vote Down
+          ⇩
         </button>
       </div>
     );
