@@ -26,7 +26,6 @@ export const getComments = async article_id => {
   const { data } = await axios.get(
     `${mainURL}/articles/${article_id}/comments`
   );
-  console.log(data.comments);
   return data.comments;
 };
 export const postComment = async (article_id, commentToPost) => {
@@ -34,7 +33,6 @@ export const postComment = async (article_id, commentToPost) => {
     `${mainURL}/articles/${article_id}/comments`,
     commentToPost
   );
-  console.log(data);
   return data.comment;
 };
 

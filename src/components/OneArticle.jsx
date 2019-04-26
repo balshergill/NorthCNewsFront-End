@@ -7,7 +7,7 @@ import { navigate, Link } from "@reach/router";
 
 class OneArticle extends Component {
   render() {
-    const { articles, article_id, user } = this.props;
+    const { articles, article_id, username } = this.props;
     const articleRequested = articles.filter(function(article) {
       return article.article_id == article_id;
     });
@@ -19,7 +19,7 @@ class OneArticle extends Component {
               <Vote
                 votes={articleRequested[0] ? articleRequested[0].votes : null}
                 id={article_id}
-                user={user}
+                username={username}
               />
             </td>
             <td width="90%" align="left" valign="top">
