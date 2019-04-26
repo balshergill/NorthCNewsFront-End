@@ -33,10 +33,6 @@ class PVDComments extends Component {
           </div>
         </form>
         <div />
-        <br />
-        <br />
-        <br />
-        <br />
         <Link to={`../../../api/articles/${article_id}/comments`}>
           <td className="ColorBlack">Comments</td>
         </Link>
