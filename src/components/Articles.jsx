@@ -8,7 +8,6 @@ class Articles extends Component {
     articles: []
   };
   render() {
-    const { articles } = this.state;
     return (
       <div>
         <HomeArticles />

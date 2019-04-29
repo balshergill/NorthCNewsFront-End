@@ -8,7 +8,7 @@ class VotesOnComments extends Component {
   };
 
   render() {
-    const { votes } = this.props;
+    const { votes, username } = this.props;
     const { voteChange } = this.state;
     return (
       <div>

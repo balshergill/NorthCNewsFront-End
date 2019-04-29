@@ -12,9 +12,10 @@ class PVDComments extends Component {
   };
 
   render() {
-    const username = "jessjelly";
-    const { article_id } = this.props;
+    console.log(this.props, "propssss");
+    const { article_id, username } = this.props;
     const { comments, body } = this.state;
+    console.log(username);
     return (
       <div>
         <td className="ColorBlack"> Add Comment </td>
@@ -60,6 +61,7 @@ class PVDComments extends Component {
                       votes={parseInt(comment.votes)}
                       comment_id={comment.comment_id}
                       article_id={article_id}
+                      username={username}
                     />
                   </div>
                 </h4>

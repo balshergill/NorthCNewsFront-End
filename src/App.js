@@ -7,7 +7,6 @@ import Home from "../src/components/Home";
 import { Router } from "@reach/router";
 import Articles from "../src/components/Articles";
 import Topics from "../src/components/Topics";
-import UserLogin from "./components/UserLogin";
 import OneArticle from "../src/components/OneArticle";
 import ArticlesByTopic from "../src/components/ArticlesByTopic";
 import PVDComments from "../src/components/PVDComments.jsx";
@@ -19,17 +18,41 @@ class App extends Component {
   state = {
     topics: [],
     articles: [],
-    user: null,
-    loginFailed: false,
+    username: "",
     isLoading: false
   };
   render() {
-    const { articles, topics, isLoading, user, loginFailed } = this.state;
+    const { articles, topics, isLoading, username } = this.state;
     if (isLoading) return <h2>Loading......</h2>;
     return (
       <div className="App">
+        <div className="Auth">
+          <form className="login-form" onSubmit={this.handleLogin}>
+            {username === "jessjelly" ? (
+              <div>
+                <h2>Welcome {username}!</h2>
+                <button onClick={this.handleLogout} id="button" type="submit">
+                  LOG OUT
+                </button>
+              </div>
+            ) : (
+              <div>
+                <h2>Please Login to your account</h2>
+                <input
+                  type="text"
+                  id="username"
+                  name="username"
+                  value={username}
+                  onChange={this.handleChange}
+                />
+                <button id="button" type="submit">
+                  Log in
+                </button>
+              </div>
+            )}
+          </form>
+        </div>
         <Header />
-        <UserLogin login={this.login} user={user} />
         <Navbar className="Navbar" topics={topics} articles={articles} />
         <Router className="Main">
           <Home path="/" articles={articles} topics={topics} />
@@ -38,7 +61,7 @@ class App extends Component {
           <OneArticle
             path="api/articles/:article_id"
             articles={articles}
-            user={user}
+            username={username}
           />
           <ArticlesByTopic
             path="api/topics/:topic_slug/articles"
@@ -50,15 +73,19 @@ class App extends Component {
             topics={topics}
             articles={articles}
           />
-          <UserLogin path="api/users/:username" />
+          <PVDComments
+            path="/api/comments/:comment_id"
+            articles={articles}
+            username={username}
+          />
           <PVDComments
             path="/api/articles/:article_id/comments"
             articles={articles}
+            username={username}
           />
-          <PVDComments path="/api/comments/:comment_id" articles={articles} />
+
           <Error path="/*" />
         </Router>
-
         <Footer />
       </div>
     );
@@ -70,14 +97,14 @@ class App extends Component {
     this.login();
   }
 
-  login = username => {
-    api.getUser(username).then(username => {
-      this.setState({ user: username });
+  login = user => {
+    api.getUser(user).then(user => {
+      this.setState({ username: user });
     });
   };
 
   logout = username => {
-    this.setState({ user: "" });
+    this.setState({ username: "" });
   };
 
   fetchTopics = () => {
@@ -89,6 +116,23 @@ class App extends Component {
     api.getArticles().then(articles => {
       this.setState({ articles });
     });
+  };
+  handleLogin = event => {
+    event.preventDefault();
+    const { username } = this.state;
+    const { login } = this.props;
+    login(username);
+  };
+
+  handleChange = ({ target }) => {
+    console.log(target.value);
+    this.setState({ username: target.value });
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    const { username } = this.state;
+    this.setState({ username: "" });
   };
 }
 

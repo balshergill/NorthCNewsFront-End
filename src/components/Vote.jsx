@@ -6,20 +6,31 @@ class Vote extends Component {
     voteChange: 0
   };
   render() {
-    const { votes } = this.props;
-    const { voteChange, username } = this.state;
-    console.log(this.props);
-    return (
-      <div>
-        <button onClick={() => this.vote(1)} disabled={voteChange === 1}>
-          ⇧
-        </button>
-        <p>Votes: {votes + voteChange} </p>
-        <button onClick={() => this.vote(-1)} disabled={voteChange === -1}>
-          ⇩
-        </button>
-      </div>
-    );
+    const { votes, username } = this.props;
+    const { voteChange } = this.state;
+    if (username === "jessjelly") {
+      return (
+        <div>
+          <button
+            className="VoteBtn"
+            onClick={() => this.vote(1)}
+            disabled={voteChange === 1}
+          >
+            ⇧
+          </button>
+          <p>Votes: {votes + voteChange} </p>
+          <button
+            className="VoteBtn"
+            onClick={() => this.vote(-1)}
+            disabled={voteChange === -1}
+          >
+            ⇩
+          </button>
+        </div>
+      );
+    } else {
+      return null;
+    }
   }
   vote = inc_votes => {
     const { id } = this.props;

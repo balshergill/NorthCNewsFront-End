@@ -3,10 +3,10 @@ import "../App.css";
 import "./css/OneArticle.css";
 import Vote from "../components/Vote.jsx";
 import PVDComments from "../components/PVDComments.jsx";
-import { navigate, Link } from "@reach/router";
 
 class OneArticle extends Component {
   render() {
+    console.log(this.props, "in one article");
     const { articles, article_id, username } = this.props;
     const articleRequested = articles.filter(function(article) {
       return article.article_id == article_id;
@@ -29,7 +29,7 @@ class OneArticle extends Component {
               <p>{articleRequested[0] ? articleRequested[0].body : null}</p>
               <br />
               <td>
-                <PVDComments article_id={article_id} />
+                <PVDComments article_id={article_id} username={username} />
                 <br />
               </td>
               <br />
