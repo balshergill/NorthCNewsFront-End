@@ -7,10 +7,49 @@
   padding: 5px;
 }
 
-.Button {
-  margin-left: 200px;
+/* .Button {
+  margin-left: 300px;
   font-size: 12px;
   padding: 3px;
+} */
+
+.Button {
+  margin-left: 320px;
+  position: relative;
+  background-color: black;
+  color: #ead98b;
+  font-family: "Mercury SSm A", "Mercury SSm B", Georgia, serif;
+  font-weight: bold;
+  border: none;
+  font-size: 15px;
+  padding: 8px;
+  width: 60px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.Button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.Button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
 }
 
 .ColorBlack {
@@ -19,14 +58,53 @@
   border-style: groove;
 }
 
-.DelButton {
+/* .DelButton {
   margin-left: 30px;
   font-size: 12px;
   padding: 3px;
+} */
+
+.DelButton {
+  margin-left: 30px;
+  position: relative;
+  background-color: black;
+  color: #ead98b;
+  font-family: "Mercury SSm A", "Mercury SSm B", Georgia, serif;
+  font-weight: bold;
+  border: none;
+  font-size: 14px;
+  padding: 5px;
+  width: 170px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  text-decoration: none;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.DelButton:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s;
+}
+
+.DelButton:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
 }
 
 .InputBox {
   position: absolute;
-  min-width: 14%;
+  min-width: 30%;
   height: 10%;
 }

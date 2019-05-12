@@ -6,13 +6,13 @@ import PVDComments from "../components/PVDComments.jsx";
 
 class OneArticle extends Component {
   render() {
-    console.log(this.props, "in one article");
+    console.log(this.props, "props in one article");
     const { articles, article_id, username } = this.props;
     const articleRequested = articles.filter(function(article) {
       return article.article_id == article_id;
     });
     return (
-      <div>
+      <div className="oneArticleBackground">
         <table align="center" width="80%" className="OneArticle">
           <tr height="100%">
             <td width="10%" valign="top">

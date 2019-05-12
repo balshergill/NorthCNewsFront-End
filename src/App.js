@@ -9,6 +9,7 @@ import Articles from "../src/components/Articles";
 import Topics from "../src/components/Topics";
 import OneArticle from "../src/components/OneArticle";
 import ArticlesByTopic from "../src/components/ArticlesByTopic";
+import UserLogin from "../src/components/UserLogin";
 import PVDComments from "../src/components/PVDComments.jsx";
 import Error from "../src/components/Error.jsx";
 
@@ -23,11 +24,16 @@ class App extends Component {
   };
   render() {
     const { articles, topics, isLoading, username } = this.state;
+
     if (isLoading) return <h2>Loading......</h2>;
     return (
       <div className="App">
         <div className="Auth">
-          <form className="login-form" onSubmit={this.handleLogin}>
+          <form
+            name="user__name"
+            className="login-form"
+            onSubmit={this.handleLogin}
+          >
             {username === "jessjelly" ? (
               <div>
                 <h2>Welcome {username}!</h2>
@@ -40,10 +46,9 @@ class App extends Component {
                 <h2>Please Login to your account</h2>
                 <input
                   type="text"
-                  id="username"
-                  name="username"
-                  value={username}
+                  name="user__name"
                   onChange={this.handleChange}
+                  placeholder="Enter username..."
                 />
                 <button id="button" type="submit">
                   Log in
@@ -73,17 +78,19 @@ class App extends Component {
             topics={topics}
             articles={articles}
           />
-          <PVDComments
-            path="/api/comments/:comment_id"
-            articles={articles}
-            username={username}
-          />
+
           <PVDComments
             path="/api/articles/:article_id/comments"
             articles={articles}
             username={username}
           />
-
+          <PVDComments
+            path="/api/comments/:comment_id"
+            articles={articles}
+            username={username}
+          />
+          <PVDComments path="/api/comments/:comment_id" articles={articles} />
+          <UserLogin path="/api/users/:username" username={username} />
           <Error path="/*" />
         </Router>
         <Footer />
@@ -131,7 +138,6 @@ class App extends Component {
 
   handleLogout = event => {
     event.preventDefault();
-    const { username } = this.state;
     this.setState({ username: "" });
   };
 }

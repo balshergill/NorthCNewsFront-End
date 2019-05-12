@@ -8,17 +8,17 @@ class PVDComments extends Component {
   state = {
     comments: [],
     isLoading: false,
-    body: ""
+    body: "",
+    article_id: ""
   };
 
   render() {
-    console.log(this.props, "propssss");
+    console.log(this.props);
     const { article_id, username } = this.props;
     const { comments, body } = this.state;
-    console.log(username);
     return (
       <div>
-        <td className="ColorBlack"> Add Comment </td>
+        <td className="AddComment"> Add a public comment...</td>
         <form onSubmit={this.handleSubmit}>
           <input
             className="InputBox"
@@ -26,8 +26,7 @@ class PVDComments extends Component {
             id="body"
             value={body}
             onChange={this.handleChange}
-            placeholder="Add a public comment..."
-            required
+            placeholder="Type here..."
           />
           <div>
             <button className="Button">Add</button>
@@ -39,14 +38,15 @@ class PVDComments extends Component {
         <br />
         <br />
         <Link to={`../../../api/articles/${article_id}/comments`}>
-          <td className="ColorBlack">Comments</td>
+          <td className="AddComment">Comments</td>
         </Link>
         {comments.length > 0 &&
           comments.map(comment => {
             return (
               <article className="AddBorder" key={comment.comment_id}>
                 <h4 className="Authordate">
-                  -- {comment.author} -- | -- {comment.created_at.slice(0, 10)}|
+                  {comment.author ? comment.author : "jessjelly"} -- | --
+                  {comment.created_at.slice(0, 10)}|
                   {username === comment.author && (
                     <button
                       onClick={() => this.handleDelete(comment.comment_id)}
@@ -82,7 +82,10 @@ class PVDComments extends Component {
     });
   }
   handleChange = event => {
+    console.log(event.target.value, "value");
+    console.log(event.target, "target");
     const { id, value } = event.target;
+
     this.setState(() => ({
       [id]: value
     }));
@@ -90,17 +93,21 @@ class PVDComments extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { body } = this.state;
-
-    const { username, articleId } = this.props;
-    const { article_id } = this.props;
-    postComment(article_id, { username, body }).then(comment => {
-      comment.author = comment.username;
-      this.setState({ comments: [comment, ...this.state.comments] });
+    const { username, article_id } = this.props;
+    const { id } = event.target;
+    postComment(username, article_id, body).then(comment => {
+      comment.author = username;
+      console.log(username, "username");
+      this.setState({
+        comments: [comment, ...this.state.comments],
+        [id]: "",
+        body: ""
+      });
     });
   };
+
   handleDelete = commentId => {
     const { article_id } = this.props;
-
     deleteComment(article_id, commentId)
       .then(() => {
         return getComments(article_id);

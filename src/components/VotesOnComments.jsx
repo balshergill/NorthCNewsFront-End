@@ -10,6 +10,7 @@ class VotesOnComments extends Component {
   render() {
     const { votes, username } = this.props;
     const { voteChange } = this.state;
+    console.log(votes, "in voteson comments");
     return (
       <div>
         <button
@@ -34,7 +35,7 @@ class VotesOnComments extends Component {
     const { comment_id } = this.props;
     changeVoteOnComment(inc_votes, comment_id).then(comment => {
       console.log(comment, "comment");
-      this.setState({ voteChange: comment.votes + inc_votes });
+      this.setState({ voteChange: 0 + inc_votes });
     });
   };
 }

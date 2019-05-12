@@ -3,8 +3,13 @@
   width: 100vw;
   text-align: center;
   display: grid;
+  background-color: #edb737;
   grid-template-columns: 4fr 1fr;
-  grid-template-rows: 4fr 1fr 20fr 1fr;
+  grid-template-rows: 6fr 1fr 25fr 1fr;
+  font-family: "Mercury SSm A", "Mercury SSm B", Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.003em;
   grid-template-areas:
     "header header"
     "navbar auth"
@@ -14,26 +19,36 @@
 
 .Auth {
   grid-area: auth;
-  border: 1px solid;
-  font-size: 13px;
+
+  font-size: 10px;
+  font-family: "Mercury SSm A", "Mercury SSm B", Georgia, serif;
+  font-weight: 100;
+  font-style: normal;
+  letter-spacing: 0.003em;
 }
 
 .Navbar {
   grid-area: navbar;
-  border: 1px solid;
+  padding-top: 1.2em;
+  padding-bottom: 0.3em;
 }
 
 .Header {
   grid-area: header;
   background-color: rgba(50, 115, 220, 0.3);
   border: 1px solid;
-  font-size: 4em;
-  font-weight: normal;
-  font-family: "Raleway", sans-serif;
+  font-size: 3em;
+  /* font-family: "Raleway", sans-serif; */
+  font-family: "Mercury SSm A", "Mercury SSm B", Georgia, serif;
+  font-weight: 50;
+  font-style: normal;
+  letter-spacing: 0.05em;
   padding-top: 40px;
   padding-bottom: 40px;
-  text-align: center;
-  background-image: url(https://www.peterwade.org.uk/wp-content/uploads/2012/09/blue-header-plain6.jpg);
+  text-align: left;
+  padding-left: 40px;
+  background-image: url(http://www.sonyphotog.com/photos/globalmedicalco/4/15387.jpg);
+  color: whitesmoke;
 }
 
 .Main {
@@ -45,7 +60,7 @@
   display: flex;
   flex-direction: row;
   flex-flow: wrap;
-  background-color: whitesmoke;
+  background-color: white;
 }
 
 .Footer {
@@ -83,8 +98,10 @@
   font-size: 14px;
   color: grey;
   text-align: center;
-  font-family: "Montserrat", sans-serif;
-  font-weight: 700;
+  font-family: "Mercury SSm A", "Mercury SSm B", Georgia, serif;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: 0.003em;
 }
 .VoteBtn {
   padding: 2px 2px;
