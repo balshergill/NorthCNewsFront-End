@@ -1,11 +1,25 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a news Web application serving as the frontend to the NCNews API hosted at https://balsnewsnc.herokuapp.com/api/
 
-## Available Scripts
+The application allows you to post articles to new or existing topics and comment + vote on the articles.
 
-In the project directory, you can run:
+Starting
+You need node.js (at least v11.0.0) and npm (at least version 6.4.1) and VS code or another text editor
+
+Get the code
+Fork the project from git. Copy the git url and when in the appropriate folder on your terminal:
+
+git clone https://github.com/balshergill/newsNCFront-End/
+This creates the project locally. Open the project in your text editor
+
+## Install Dependencies
+Run the following to install all the required packages.
+
+### `npm install`
+Once all required dependencies are installed, you can check the node_modules folder (which should be created now) to see if the folders for each of these libraries exists.
+
+To run the app use:
 
 ### `npm start`
-
 Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -66,3 +80,5 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+Front end techmologies: Node.js, React, styling was carried out with HTML and CSS
