@@ -71,11 +71,11 @@ export const saveLocalStorage = json_user_details => {
 };
 
 export const getLocalStorage = () => {
-  let user_data = localStorage.getItem("userData");
+  let userData = localStorage.getItem("userData");
   let myObject = false;
   try {
-    if (user_data !== undefined) {
-      myObject = JSON.parse(user_data);
+    if (userData !== undefined) {
+      myObject = JSON.parse(userData);
     }
   } catch (err) {}
 

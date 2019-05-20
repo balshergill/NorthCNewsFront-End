@@ -117,7 +117,6 @@ class HomeArticles extends Component {
 
   fetchArticles = () => {
     getArticles().then(articles => {
-      console.log(articles);
       this.setState({ articles });
     });
   };

@@ -54,16 +54,6 @@ class App extends Component {
         console.log("Login Failed");
       }
     });
-    // .catch(err => {
-    //   navigate("/error", {
-    //     replace: true,
-    //     state: {
-    //       code: err.code,
-    //       message: err.message,
-    //       from: "/articles"
-    //     }
-    //   });
-    // });
   };
 
   logout = username => {};
