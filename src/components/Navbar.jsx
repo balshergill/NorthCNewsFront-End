@@ -61,7 +61,7 @@ class Navbar extends Component {
           })}
 
           <button className="buttonNavbar">
-            <Link to="api/users/:username">Login</Link>
+            <Link to="api/users/:username">Register/Login</Link>
           </button>
         </nav>
       </div>

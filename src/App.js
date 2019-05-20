@@ -127,7 +127,7 @@ class App extends Component {
         </div>
         <Header />
         <Navbar className="Navbar" topics={topics} articles={articles} />
-        <Router className="Main">
+        <Router className="Main" primary={false}>
           <Home path="/" articles={articles} topics={topics} />
           <HomeArticles path="/api/articles" />
           <OneArticle
@@ -145,7 +145,6 @@ class App extends Component {
             topics={topics}
             articles={articles}
           />
-
           <PVDComments
             path="/api/articles/:article_id/comments"
             articles={articles}
