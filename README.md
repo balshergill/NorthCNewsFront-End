@@ -1,3 +1,5 @@
+https://shergill.netlify.com/
+
 This is a news Web application serving as the frontend to the NCNews API hosted at https://balsnewsnc.herokuapp.com/api/
 
 The application allows you to post articles to new or existing topics as well as comment and vote on the articles.
