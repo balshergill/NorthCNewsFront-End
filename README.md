@@ -1,6 +1,6 @@
 This is a news Web application serving as the frontend to the NCNews API hosted at https://balsnewsnc.herokuapp.com/api/
 
-The application allows you to post articles to new or existing topics and comment + vote on the articles.
+The application allows you to post articles to new or existing topics as well as comment and vote on the articles.
 
 Starting
 You need node.js (at least v11.0.0) and npm (at least version 6.4.1) and VS code or another text editor
