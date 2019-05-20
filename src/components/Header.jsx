@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 import "../App.css";
 
 const Header = () => {
@@ -7,9 +6,3 @@ const Header = () => {
 };
 
 export default Header;
-
-{
-  /* <Link to="/">
-  <div className="Header">NORTH C NEWS</div>
-</Link> */
-}

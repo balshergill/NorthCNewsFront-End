@@ -5,8 +5,7 @@ import Header from "../src/components/Header";
 import Footer from "../src/components/Footer";
 import Home from "../src/components/Home";
 import { Router } from "@reach/router";
-import Articles from "../src/components/Articles";
-import Topics from "../src/components/Topics";
+import HomeArticles from "../src/components/HomeArticles";
 import OneArticle from "../src/components/OneArticle";
 import ArticlesByTopic from "../src/components/ArticlesByTopic";
 import UserLogin from "../src/components/UserLogin";
@@ -20,10 +19,89 @@ class App extends Component {
     topics: [],
     articles: [],
     username: "",
+    loginUserName: "",
     isLoading: false
+    // error: null
   };
+
+  componentDidMount() {
+    this.fetchTopics();
+    this.fetchArticles();
+    this.checkLoggedInUser();
+  }
+
+  checkLoggedInUser = () => {
+    const ls = api.getLocalStorage();
+    if (ls) {
+      this.setState({ loginUserName: ls.user.username });
+    } else {
+      this.setState({ loginUserName: "" });
+    }
+  };
+
+  login = user => {
+    api.getUser(user).then(userdata => {
+      if (
+        userdata !== undefined &&
+        userdata !== "" &&
+        userdata.user !== undefined &&
+        userdata.user !== ""
+      ) {
+        api.saveLocalStorage(userdata);
+        this.setState({ username: userdata.user.username });
+        this.checkLoggedInUser();
+      } else {
+        console.log("Login Failed");
+      }
+    });
+    // .catch(err => {
+    //   navigate("/error", {
+    //     replace: true,
+    //     state: {
+    //       code: err.code,
+    //       message: err.message,
+    //       from: "/articles"
+    //     }
+    //   });
+    // });
+  };
+
+  logout = username => {};
+
+  fetchTopics = () => {
+    api.getTopics().then(topics => {
+      this.setState({ topics });
+    });
+  };
+  fetchArticles = () => {
+    api.getArticles().then(articles => {
+      this.setState({ articles });
+    });
+  };
+
+  handleLogin = (event, in_user_name = "") => {
+    event.preventDefault();
+    const { username } = this.state;
+    if (in_user_name === "") {
+      return this.login(username);
+    } else {
+      return this.login(in_user_name);
+    }
+  };
+
+  handleChange = ({ target }) => {
+    this.setState({ username: target.value });
+  };
+
+  handleLogout = event => {
+    event.preventDefault();
+    this.setState({ username: "" });
+    api.removeLocalStorage();
+    this.setState({ loginUserName: "", username: "" });
+  };
+
   render() {
-    const { articles, topics, isLoading, username } = this.state;
+    const { articles, topics, isLoading, loginUserName, error } = this.state;
 
     if (isLoading) return <h2>Loading......</h2>;
     return (
@@ -34,9 +112,9 @@ class App extends Component {
             className="login-form"
             onSubmit={this.handleLogin}
           >
-            {username === "jessjelly" ? (
+            {loginUserName !== "" ? (
               <div>
-                <h2>Welcome {username}!</h2>
+                <h2>Welcome {loginUserName}!</h2>
                 <button onClick={this.handleLogout} id="button" type="submit">
                   LOG OUT
                 </button>
@@ -61,12 +139,11 @@ class App extends Component {
         <Navbar className="Navbar" topics={topics} articles={articles} />
         <Router className="Main">
           <Home path="/" articles={articles} topics={topics} />
-          <Articles path="/api/articles" />
-          <Topics path="api/topics" topics={topics} />
+          <HomeArticles path="/api/articles" />
           <OneArticle
             path="api/articles/:article_id"
             articles={articles}
-            username={username}
+            username={loginUserName}
           />
           <ArticlesByTopic
             path="api/topics/:topic_slug/articles"
@@ -82,64 +159,28 @@ class App extends Component {
           <PVDComments
             path="/api/articles/:article_id/comments"
             articles={articles}
-            username={username}
+            username={loginUserName}
           />
           <PVDComments
             path="/api/comments/:comment_id"
             articles={articles}
-            username={username}
+            username={loginUserName}
           />
           <PVDComments path="/api/comments/:comment_id" articles={articles} />
-          <UserLogin path="/api/users/:username" username={username} />
-          <Error path="/*" />
+          <UserLogin
+            path="/api/users/:username"
+            value={this.state.username}
+            onChange={this.handleChange}
+            loginUserName={loginUserName}
+            handleLogout={this.handleLogout}
+            handleLogin={this.handleLogin}
+          />
+          <Error path="/*" error={error} />
         </Router>
         <Footer />
       </div>
     );
   }
-
-  componentDidMount() {
-    this.fetchTopics();
-    this.fetchArticles();
-    this.login();
-  }
-
-  login = user => {
-    api.getUser(user).then(user => {
-      this.setState({ username: user });
-    });
-  };
-
-  logout = username => {
-    this.setState({ username: "" });
-  };
-
-  fetchTopics = () => {
-    api.getTopics().then(topics => {
-      this.setState({ topics });
-    });
-  };
-  fetchArticles = () => {
-    api.getArticles().then(articles => {
-      this.setState({ articles });
-    });
-  };
-  handleLogin = event => {
-    event.preventDefault();
-    const { username } = this.state;
-    const { login } = this.props;
-    login(username);
-  };
-
-  handleChange = ({ target }) => {
-    console.log(target.value);
-    this.setState({ username: target.value });
-  };
-
-  handleLogout = event => {
-    event.preventDefault();
-    this.setState({ username: "" });
-  };
 }
 
 export default App;

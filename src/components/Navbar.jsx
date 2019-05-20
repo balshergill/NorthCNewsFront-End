@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
 import "../App.css";
-import { getArticles } from "../api.js";
 import "../components/css/Navbar.css";
+
+export const capitalizeFirstLetter = string => {
+  if (string == null) {
+    return "";
+  }
+  if (string === undefined) {
+    return "";
+  }
+
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
 
 class Navbar extends Component {
   state = {
-    articles: [],
     topics: [],
     comments: []
   };
@@ -20,38 +29,37 @@ class Navbar extends Component {
           <button className="buttonNavbar">
             <Link to="/">Homepage</Link>
           </button>
-          <span className="dropdown">
-            <button className="dropbtn" id="button-drop">
-              Topics
-              <span className="dropdown-content">
-                {topics.map(topic => {
-                  return (
-                    <li key={topic.slug}>
-                      <Link to={`api/topics/${topic.slug}/articles`}>{`${
-                        topic.slug
-                      }`}</Link>
-                    </li>
-                  );
-                })}
+          {topics.map(topic => {
+            return (
+              <span className="dropdown">
+                <button className="dropbtn">
+                  <Link
+                    to={`api/topics/${topic.slug}/articles`}
+                  >{`${capitalizeFirstLetter(topic.slug)}`}</Link>
+                  {articles.map(article => {
+                    return article.topic === topic.slug;
+                  }).length > 0 ? (
+                    <span className="dropdown-content">
+                      {articles.map(article => {
+                        return article.topic === topic.slug ? (
+                          <li key={article.title}>
+                            <Link to={`api/articles/${article.article_id}`}>{`${
+                              article.title
+                            }`}</Link>
+                          </li>
+                        ) : (
+                          ""
+                        );
+                      })}
+                    </span>
+                  ) : (
+                    ""
+                  )}
+                </button>
               </span>
-            </button>
-          </span>
-          <span className="dropdown">
-            <button className="dropbtn" id="button-drop">
-              <Link to={"/api/articles"}>All Articles </Link>
-              <span className="dropdown-content">
-                {articles.map(article => {
-                  return (
-                    <li key={article.title}>
-                      <Link to={`api/articles/${article.article_id}`}>{`${
-                        article.title
-                      }`}</Link>
-                    </li>
-                  );
-                })}
-              </span>
-            </button>
-          </span>
+            );
+          })}
+
           <button className="buttonNavbar">
             <Link to="api/users/:username">Login</Link>
           </button>
@@ -59,14 +67,6 @@ class Navbar extends Component {
       </div>
     );
   }
-  componentDidMount() {
-    this.fetchArticles();
-  }
-  fetchArticles = () => {
-    getArticles().then(articles => {
-      this.setState({ articles });
-    });
-  };
 }
 
 export default Navbar;

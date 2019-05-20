@@ -4,13 +4,13 @@ import "../App.css";
 
 class VotesOnComments extends Component {
   state = {
-    voteChange: 0
+    voteChange: 0,
+    msg: ""
   };
 
   render() {
     const { votes, username } = this.props;
-    const { voteChange } = this.state;
-    console.log(votes, "in voteson comments");
+    const { voteChange, msg } = this.state;
     return (
       <div>
         <button
@@ -28,15 +28,24 @@ class VotesOnComments extends Component {
         >
           ⇩
         </button>
+        {username === "" ? msg : ""}
       </div>
     );
   }
   handleVoteChange = inc_votes => {
-    const { comment_id } = this.props;
-    changeVoteOnComment(inc_votes, comment_id).then(comment => {
-      console.log(comment, "comment");
-      this.setState({ voteChange: 0 + inc_votes });
-    });
+    const { comment_id, username, votes } = this.props;
+    if (username !== "" && username !== undefined) {
+      this.setState({ msg: "" });
+      changeVoteOnComment(inc_votes, comment_id).then(comment => {
+        const v = comment.votes - votes;
+        this.setState({ voteChange: 0 + v });
+      });
+    } else {
+      alert("You must be logged in to vote on a comment!");
+      // this.setState({
+      //   msg: <div>You must be logged in to vote on a comment</div>
+      // });
+    }
   };
 }
 export default VotesOnComments;

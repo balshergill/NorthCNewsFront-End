@@ -30,12 +30,10 @@ export const getComments = async article_id => {
 };
 
 export const postComment = async (username, article_id, commentToPost) => {
-  console.log(article_id, commentToPost, "lalalal");
   const { data } = await axios.post(
     `${mainURL}/articles/${article_id}/comments`,
     { author: username, body: commentToPost }
   );
-  console.log("dhgdhsjgfshg", data);
   return data.comment;
 };
 
@@ -57,4 +55,34 @@ export const changeVoteOnComment = async (inc_votes, comment_id) => {
     inc_votes: `${inc_votes}`
   });
   return data.updatedComment[0];
+};
+
+export const saveLocalStorage = json_user_details => {
+  try {
+    if (json_user_details !== undefined && json_user_details !== "") {
+      let json_user_details_json = JSON.stringify(json_user_details);
+      localStorage.setItem("userData", json_user_details_json);
+      return true;
+    } else {
+      return false;
+    }
+  } catch (err) {}
+  return false;
+};
+
+export const getLocalStorage = () => {
+  let user_data = localStorage.getItem("userData");
+  let myObject = false;
+  try {
+    if (user_data !== undefined) {
+      myObject = JSON.parse(user_data);
+    }
+  } catch (err) {}
+
+  return myObject;
+};
+
+export const removeLocalStorage = () => {
+  localStorage.removeItem("userData");
+  return true;
 };

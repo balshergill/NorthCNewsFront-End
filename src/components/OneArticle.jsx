@@ -1,19 +1,19 @@
-import React, { Component } from "react";
+import React from "react";
 import "../App.css";
 import "./css/OneArticle.css";
 import Vote from "../components/Vote.jsx";
 import PVDComments from "../components/PVDComments.jsx";
 
-class OneArticle extends Component {
-  render() {
-    console.log(this.props, "props in one article");
-    const { articles, article_id, username } = this.props;
-    const articleRequested = articles.filter(function(article) {
-      return article.article_id == article_id;
-    });
-    return (
-      <div className="oneArticleBackground">
-        <table align="center" width="80%" className="OneArticle">
+const OneArticle = props => {
+  const { articles, article_id, username } = props;
+  const articleRequested = articles.filter(function(article) {
+    return article.article_id == article_id;
+  });
+
+  return (
+    <div className="oneArticleBackground">
+      <table align="center" width="80%" className="OneArticle">
+        <tbody>
           <tr height="100%">
             <td width="10%" valign="top">
               <Vote
@@ -35,10 +35,10 @@ class OneArticle extends Component {
               <br />
             </td>
           </tr>
-        </table>
-      </div>
-    );
-  }
-}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default OneArticle;

@@ -9,17 +9,19 @@ class PVDComments extends Component {
     comments: [],
     isLoading: false,
     body: "",
-    article_id: ""
+    article_id: "",
+    msg: ""
   };
 
   render() {
-    console.log(this.props);
     const { article_id, username } = this.props;
-    const { comments, body } = this.state;
+    const { comments, body, msg } = this.state;
     return (
       <div>
-        <td className="AddComment"> Add a public comment...</td>
+        <p className="AddComment"> Add a public comment...</p>
         <form onSubmit={this.handleSubmit}>
+          {username === "" ? msg : ""}
+
           <input
             className="InputBox"
             type="text"
@@ -38,16 +40,17 @@ class PVDComments extends Component {
         <br />
         <br />
         <Link to={`../../../api/articles/${article_id}/comments`}>
-          <td className="AddComment">Comments</td>
+          <p className="AddComment">Comments</p>
         </Link>
         {comments.length > 0 &&
           comments.map(comment => {
             return (
               <article className="AddBorder" key={comment.comment_id}>
                 <h4 className="Authordate">
-                  {comment.author ? comment.author : "jessjelly"} -- | --
+                  {comment.author ? comment.author : "testauthor"}
+                  -- | --
                   {comment.created_at.slice(0, 10)}|
-                  {username === comment.author && (
+                  {username == comment.author && (
                     <button
                       onClick={() => this.handleDelete(comment.comment_id)}
                       className="DelButton"
@@ -82,8 +85,6 @@ class PVDComments extends Component {
     });
   }
   handleChange = event => {
-    console.log(event.target.value, "value");
-    console.log(event.target, "target");
     const { id, value } = event.target;
 
     this.setState(() => ({
@@ -95,15 +96,23 @@ class PVDComments extends Component {
     const { body } = this.state;
     const { username, article_id } = this.props;
     const { id } = event.target;
-    postComment(username, article_id, body).then(comment => {
-      comment.author = username;
-      console.log(username, "username");
-      this.setState({
-        comments: [comment, ...this.state.comments],
-        [id]: "",
-        body: ""
+
+    if (username !== "" && username !== undefined) {
+      this.setState({ msg: "" });
+      postComment(username, article_id, body).then(comment => {
+        comment.author = username;
+        this.setState({
+          comments: [comment, ...this.state.comments],
+          [id]: "",
+          body: ""
+        });
       });
-    });
+    } else {
+      alert("You must be logged in to add a comment!");
+      // this.setState({
+      //   msg: <div>You must be logged in to add a comment!</div>
+      // });
+    }
   };
 
   handleDelete = commentId => {

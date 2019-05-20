@@ -8,8 +8,7 @@ class Vote extends Component {
   render() {
     const { votes, username } = this.props;
     const { voteChange } = this.state;
-    console.log(votes);
-    if (username === "jessjelly") {
+    if (username) {
       return (
         <div>
           <button
@@ -38,9 +37,10 @@ class Vote extends Component {
   }
   vote = inc_votes => {
     const { id, votes } = this.props;
-    const { voteChange } = this.state;
+    // const { voteChange } = this.state;
     getVotes(inc_votes, id).then(article => {
-      this.setState({ voteChange: 0 + inc_votes });
+      let v = article.votes - votes;
+      this.setState({ voteChange: 0 + v });
     });
   };
 }
