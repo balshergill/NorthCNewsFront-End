@@ -52,7 +52,7 @@ class UserLogin extends Component {
                 onChange={e => {
                   this.setState({ username: e.target.value });
                 }}
-                placeholder="Enter username..."
+                placeholder="eg username jessjelly"
               />
               <button
                 id="button1"

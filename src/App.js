@@ -116,7 +116,7 @@ class App extends Component {
                   type="text"
                   name="user__name"
                   onChange={this.handleChange}
-                  placeholder="Enter username..."
+                  placeholder="eg username jessjelly"
                 />
                 <button id="button" type="submit">
                   Log in
